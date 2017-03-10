@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="ngApp">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Evolution Technology Test 1</title>
+	<link rel="stylesheet" type="text/css" href="./css/style.css">
+	<link rel="stylesheet" type="text/css" href="fonts/stylesheet.css">
+	<script type="text/javascript" src="https://opensource.keycdn.com/angularjs/1.6.2/angular.min.js "></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.7/angular-resource.min.js"></script>
+	<script type="text/javascript" src="js/angularModule.js"></script>
+</head>
+<body>
+	<div class="wrapper" ng-controller="ngController as contentList">
+		<div class="container">
+			<img src="img/arrow.png" class="container__section-arrow" ng-click="contentList.slide()">
+			<div class="container__header">
+				Сравнение
+			</div>
+			<div class="container__main">
+				<section class="container__section" style="z-index: 999;">
+					<div class="container__section-compare">
+						<div class="container__section-text">Показывать только отличия?</div>
+						<div class="container__section-wrapper">
+							<button class="container__section-btn" ng-click="contentList.showDif($event)">ДА</button>
+							<button class="container__section-btn">НЕТ</button>
+						</div>
+					</div>
+					<div class="container__section-params">
+						<div class="container__section-header">
+							Основные параметры:
+						</div>
+						<div class="container__section-info">
+							<ul class="container__section-list">
+								<li class="container__section-item">Пробег</li>
+								<li class="container__section-item">Кузов</li>
+								<li class="container__section-item">Двигатель</li>
+								<li class="container__section-item">Привод</li>
+							</ul>
+						</div>
+					</div>
+					<div class="container__section-params">
+						<div class="container__section-header">
+							Комплектация:
+						</div>
+						<div class="container__section-inner">
+							<div class="container__section-sHeader">
+								Комфорт
+							</div>
+							<div class="container__section-info">
+								<ul class="container__section-list">
+									<li class="container__section-item">Климат-контроль</li>
+									<li class="container__section-item">Кондиционер</li>
+									<li class="container__section-item">Литые диски</li>
+									<li class="container__section-item">Мультируль</li>
+									<li class="container__section-item">Парктроник</li>
+								</ul>
+							</div>
+						</div>
+						<div class="container__section-inner">
+							<div class="container__section-sHeader">
+								Безопасность
+							</div>
+							<div class="container__section-info">
+								<ul class="container__section-list">
+									<li class="container__section-item">ABS</li>
+									<li class="container__section-item">Сигнализация</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="container__section-params">
+						<div class="container__section-header">
+							Преимущества:
+						</div>
+						<div class="container__section-info">
+							<ul class="container__section-list">
+								<li class="container__section-item">100% история обслуживания</li>
+								<li class="container__section-item">Aster Plus Expert</li>
+							</ul>
+						</div>
+					</div>
+					<div class="container__section-params">
+						<div class="container__section-header">
+							Автомобиль в салоне:
+						</div>
+						<div class="container__section-info">
+							<ul class="container__section-list">
+								<li class="container__section-item">Салон</li>
+								<li class="container__section-item">Время работы</li>
+								<li class="container__section-item">Телефон</li>
+							</ul>
+						</div>
+					</div>
+					<div class="container__section-params">
+						<div class="container__section-header">
+							Варианты покупки:
+						</div>
+					</div>
+				</section>
+				
+				<div class="container__wrapper">
+					<section class="container__section" ng-repeat="item in contentList.list">
+						<div class="container__section-img">
+							<img src="./img/star.png" class="container__section-star" height="16" width="17" alt="star">
+							<img src="img/car.png" class="container__section-car" height="214" width="222">
+						</div>
+						<div class="container__section-param">
+							<div class="container__section-info">
+								<ul class="container__section-list">
+									<li class="container__section-item">{{item.run}}</li>
+									<li class="container__section-item">{{item.body}}</li>
+									<li class="container__section-item">{{item.motor}}</li>
+									<li class="container__section-item">{{item.drive}}</li>
+								</ul>
+							</div>
+						</div>
+						<div class="container__section-param2">
+							<div class="container__section-inner2">
+								<div class="container__section-info">
+									<ul class="container__section-list">
+										<li class="container__section-item"><img src="img/dot.png" class="container__section-img2" height="10" width="10" alt="dot" ng-show="{{item.climat}}"></li>
+										<li class="container__section-item"><img src="img/dot.png" class="container__section-img2" height="10" width="10" alt="dot" ng-show="{{item.conditioner}}"></li>
+										<li class="container__section-item"><img src="img/dot.png" class="container__section-img2" height="10" width="10" alt="dot" ng-show="{{item.disks}}"></li>
+										<li class="container__section-item"><img src="img/dot.png" class="container__section-img2" height="10" width="10" alt="dot" ng-show="{{item.multiwheel}}"></li>
+										<li class="container__section-item"><img src="img/dot.png" class="container__section-img2" height="10" width="10" alt="dot" ng-show="{{item.park}}"></li>
+									</ul>
+								</div>
+							</div>
+							<div class="container__section-inner">
+								<div class="container__section-info">
+									<ul class="container__section-list">
+										<li class="container__section-item"><img src="img/dot.png" class="container__section-img2" height="10" width="10" alt="dot" ng-show="{{item.abs}}"></li>
+										<li class="container__section-item"><img src="img/dot.png" class="container__section-img2" height="10" width="10" alt="dot" ng-show="{{item.signal}}"></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="container__section-param3">
+							<div class="container__section-info">
+								<ul class="container__section-list">
+									<li class="container__section-item"><img src="img/dot.png" class="container__section-img2" height="10" width="10" alt="dot" ng-show="{{item.serve}}"></li>
+									<li class="container__section-item"><img src="img/dot.png" class="container__section-img2" height="10" width="10" alt="dot" ng-show="{{item.aster}}"></li>
+								</ul>
+							</div>
+						</div>
+						<div class="container__section-param4">
+							<div class="container__section-info">
+								<ul class="container__section-list">
+									<li class="container__section-item">{{item.salon}}</li>
+									<li class="container__section-item">{{item.time}}</li>
+									<li class="container__section-item">{{item.phone}}</li>
+								</ul>
+							</div>
+						</div>
+						<div class="container__section-param">
+							<button class="container__section-btn2">КУПИТЬ</button>
+						</div>
+					</section>
+				</div>
+			</div>
+
+		</div>
+		
+	</div>
+	<script type="text/javascript" src="./js/main.js"></script>
+</body>
+</html>

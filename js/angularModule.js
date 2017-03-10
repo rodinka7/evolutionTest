@@ -2,7 +2,8 @@
 
 angular.module('ngApp', [])
 	.controller('ngController', function(){
-			var contentList = this;			
+			var contentList = this,
+				wrapper = document.querySelector('.container__wrapper');		
 			
 			contentList.list = [
 				{"img": "./img/car.png", "run": 94797, "body": "Внедорожник", "motor": "2.4 л, Бензин (170 л.с.)", "drive": "Полный привод", "climat": "true", "conditioner": "true", "disks": "true", "multiwheel": "true", "park": "true", "abs": "true", "signal": "true", "serve": "true", "aster": "true", "salon": "Aster Еxpert", "time": "Ежедневно с 8.00 до 22.00", "phone": "+7(495)7777777"},
@@ -21,10 +22,41 @@ angular.module('ngApp', [])
 			}
 
 			contentList.slide = function() {
-				var wrapper = document.querySelector('.container__wrapper');
-				wrapper.style.position = 'absolute';
-				wrapper.style.left = '-50%';
-				wrapper.style.transtion = '3s'; 
+				var	start = Date.now();
+
+				var timer = setInterval(function() {
+				 	var timePassed = Date.now() - start;
+
+				  	if (timePassed >= 1010) {
+				    	clearInterval(timer);
+				    	return;
+				  	}
+
+				  	draw(timePassed);
+				}, 20);
+
+				function draw(timePassed) {
+				  wrapper.style.transform = 'translateX(-'+ timePassed / 20 + '%)';
+				}
+			}
+
+			contentList.slideLeft = function() {
+				var	start = Date.now();
+
+				var timer = setInterval(function() {
+				 	var timePassed = Date.now() - start;
+
+				  	if (timePassed >= 1010) {
+				    	clearInterval(timer);
+				    	return;
+				  	}
+
+				  	draw(timePassed);
+				}, 20);
+
+				function draw(timePassed) {
+				  wrapper.style.transform = 'translateX('+ timePassed / 20 + '%)';
+				}
 			}
 	
 		});
